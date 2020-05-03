@@ -13,7 +13,10 @@ class Student(models.Model):
     birthdate = models.DateField(default=datetime.datetime.now().date())
 
     def __str__(self):
-        return f'{self.first_name}, {self.last_name}, {self.birthdate}'
+        return f'{self.first_name},' \
+               f'{self.last_name},' \
+               f'{self.email},' \
+               f'{self.birthdate}'
 
     @classmethod
     def generate_student(cls):

@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <form action="/students/" method="GET">
+        <label for="fname">Name</label>
+        <input name="filter">
+        <p></p>
+        <label for="email">Email</label>
+        <input type="text" id="email" name="email"><br>
+        <input name="submit" type="submit">
+    </form>
+
+{#    <form action="/students/" method="GET">#}
+{#        <input placeholder="Clear" name="Clear" type="submit">#}
+{#    </form>#}
+
+    {% if students %}
+        <table style="width:100%" border="1" >
+          <tr>
+            <th>Id</th>
+            <th>First name</th>
+            <th>Last name</th>
+            <th>Email</th>
+            <th>Group</th>
+            <th>🖉</th>
+            <th>🗑️</th>
+          </tr>
+
+        {% for student in students %}
+            <tr>
+                <td>{{ student.id }}</td>
+                <td>{{ student.first_name }}</td>
+                <td>{{ student.last_name }}</td>
+                <td>{{ student.email }}</td>
+                <td>{{ student.group.name }} - {{ student.group.course }}</td>
+                <td><a href="{% url 'student-edit' student.id%}">EDIT</a></td>
+                <td><a href="{% url 'student-delete' student.id%}">DELETE</a></td>
+            </tr>
+        {% endfor %}
+        </table>
+    {% else %}
+        <h3>List is empty, refine you search query</h3>
+    {% endif %}
+{% endblock %}

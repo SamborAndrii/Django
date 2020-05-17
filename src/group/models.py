@@ -1,21 +1,19 @@
-import random
-
 from django.db import models
+
+# Create your models here.
+from faker.generator import random
 
 
 class Group(models.Model):
     name = models.CharField(max_length=64)
-    course = models.CharField(max_length=128)
-
-    def __str__(self):
-        return f'{self.name} - {self.course}'
+    course = models.CharField(max_length=64)
 
     @classmethod
     def generate_group(cls):
 
         group = cls(
-            name=f'Group - {random.choice(range(5))}',
-            course=random.choice([
+            name = f'Group {random.choice([1,2,3,4,5])}',
+            course = random.choice([
                 "IT 210: Web Application Development.",
                 "IT 226: Enterprise Information Systems.",
                 "IT 227: E-Commerce Technologies.",
@@ -27,3 +25,6 @@ class Group(models.Model):
         )
 
         group.save()
+
+    def __str__(self):
+        return f'{self.name} - {self.course}'

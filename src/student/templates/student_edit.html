@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <form action="{% url 'student-edit' id %}" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <p></p>
+        <button name="submit" type="submit">Save</button>
+        <button formaction="{% url 'student-delete' id %}" name="submit" type="submit">Delete</button>
+    </form>
+{% endblock %}

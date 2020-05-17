@@ -4,14 +4,18 @@
     <meta charset="UTF-8">
     <title>{{ title }}</title>
 </head>
+<style>
+.errorlist
+    {
+        color: red;
+    }
+</style>
 <body>
 
-<h1>LMS</h1>
-<h3>{{ title }}</h3>
+<h1>{{ title }}</h1>
 
 {% block content %}
 {% endblock %}
-
 
 </body>
 </html>

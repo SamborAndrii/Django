@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <form action="{% url 'student-add' %}" method="POST">
+        {% csrf_token %}
+        {{ form.as_ul }}
+        <input name="submit" type="submit">
+    </form>
+{% endblock %}
